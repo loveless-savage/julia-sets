@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# compile
+gcc src/* -o juliadist -I inc -lm
+
+# execute
+./juliadist $@
+
+# show the resultant image
+if [ $? == 0 ]; then
+	eog juliadist*png
+fi
+
+# print dividing line across the length of the terminal
+echo
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -

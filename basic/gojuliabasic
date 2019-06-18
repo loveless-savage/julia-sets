@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# compile
+gcc src/* -o juliabasic -I inc -lm
+
+# execute
+./juliabasic $@
+
+# show the resultant image
+eog juliabasic.png
+
+# print dividing line across the length of the terminal
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
