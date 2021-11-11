@@ -95,14 +95,22 @@ bool vec4d :: isBounded (float dim) {
 bool vec4d :: trapped (int itnum) {
 	// Z = x+yi
 	float complex Z = this->x + this->y *I;
+	//float za = this->x;
+	//float zb = this->y;
 	// C = z+wi
 	float complex C = this->z + this->w *I;
+	//float ca = this->z;
+	//float cb = this->w;
 
 	// loop to test for set containment
 	for(int it=0;it<itnum;it++){
 		Z*=Z;
 		Z+=C;
+		//za_temp = za*za - zb*zb + ca;
+		//zb = 2*za*zb + cb;
+		//za = za_temp;
 		if( cabsf(Z) > 2.0 ) return false;
+		//if( __builtin_hypotf(za,zb) > 2.0 ) return false;
 	}
 
 	return true;

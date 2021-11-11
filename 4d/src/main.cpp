@@ -45,15 +45,15 @@
 vec4d vr (R_XZ,R_YW,R_YZ,R_XW);
 
 // space coordinates to be rotated with the world's rotation
-vec4d vx (	D_PLANE/D_MIN,	0.0,	0.0,	0.0	);	//zero-plane width divided by resolution
-vec4d vy (	0.0,	D_PLANE/D_MIN,	0.0,	0.0	);	//ditto, in the y-direction
-vec4d vz (	0.0,	0.0,	D_CAMERA,	0.0	);		//distance of camera from origin
+vec4d vx (	D_PLANE/D_MIN,	0.0,	0.0,	0.0	);	// zero-plane width divided by resolution
+vec4d vy (	0.0,	D_PLANE/D_MIN,	0.0,	0.0	);	// ditto, in the y-direction
+vec4d vz (	0.0,	0.0,	D_CAMERA,	0.0	);		// distance of camera from origin
 //vec4d vw (	0.0,	0.0,	0.0,	1.0	);
 // deltas of each
-vec4d d_z (	0.0,	0.0,	-D_SCOPE/D_D,	0.0	);	//radius of the scope divided by z-resolution; negative because away from the camera
+vec4d d_z (	0.0,	0.0,	-D_SCOPE/D_D,	0.0	);	// radius of the scope divided by z-resolution; negative because away from the camera
 //vec4d d_w (	0.0,	0.0,	0.0,	1.0	);
 // d_x & d_y are used to slope the delta ray, so perspective takes effect
-vec4d d_x (	D_SCOPE/D_D /D_CAMERA *D_PLANE/D_MIN, 	0.0,	0.0,	0.0	);	//length of d_z divided by distance from origin to camera
+vec4d d_x (	D_SCOPE/D_D /D_CAMERA *D_PLANE/D_MIN, 	0.0,	0.0,	0.0	);	// length of d_z divided by distance from origin to camera
 vec4d d_y (	0.0,	D_SCOPE/D_D /D_CAMERA *D_PLANE/D_MIN,	0.0,	0.0	);	// this ratio is multiplied by the relative pixel length, then by px/y for each pixel
 
 // container for primary view ray and its delta
@@ -169,7 +169,7 @@ int main(int argc, char** argv){
 		*head++ = spectrumSkew(depth+M_PI/3.0);
 */
 		//printf("\tpixel done\n");
-	} printf("."); usleep(10000); }//hundredth of a second between each row to give the CPU a breath
+	} printf("."); fflush(stdout); usleep(10000); } // hundredth of a second between each row to give the CPU a breath
 
 	stbi_write_png("julia4d.png", D_W, D_H, 3, pts, D_W*3);
 
