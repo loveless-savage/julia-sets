@@ -8,7 +8,7 @@ gcc src/* -o juliadist -I inc -lm
 
 # show the resultant image
 if [ $? == 0 ]; then
-	eog juliadist*png
+	feh juliadist*png
 fi
 
 # print dividing line across the length of the terminal

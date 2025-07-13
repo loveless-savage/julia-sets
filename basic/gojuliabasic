@@ -7,7 +7,7 @@ gcc src/* -o juliabasic -I inc -lm
 ./juliabasic $@
 
 # show the resultant image
-eog juliabasic.png
+feh juliabasic.png
 
 # print dividing line across the length of the terminal
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -

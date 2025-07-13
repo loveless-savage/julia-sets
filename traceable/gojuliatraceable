@@ -7,7 +7,7 @@ gcc src/* -o juliatraceable -I inc -lm -DH=$1 -DITNUM=$2
 ./juliatraceable $@
 
 # show the resultant image
-eog juliatraceable.png
+feh juliatraceable.png
 
 # print dividing line across the length of the terminal
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -

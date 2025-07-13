@@ -30,7 +30,7 @@ fi
 ./julia4d "$@"
 
 # show the resultant image
-eog julia4d.png
+feh julia4d.png
 
 echo
 echo script finished.

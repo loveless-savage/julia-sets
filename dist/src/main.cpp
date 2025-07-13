@@ -9,6 +9,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
 
+using namespace std;
+
 #define W 800
 #define H 800
 
@@ -22,9 +24,9 @@ float l_trans(float val, float min1, float max1, float min2, float max2){
 }
 
 // traditional julia test
-bool jt(float complex z, float complex c, int itnum){
+bool jt(complex<float> z, complex<float> c, int itnum){
 	for(char n = 0; n < itnum; n++){
-		if(cabsf(z)>2.0){
+		if(abs(z)>2.0){
 			return false;
 		}
 		z *= z;
@@ -34,10 +36,10 @@ bool jt(float complex z, float complex c, int itnum){
 }
 
 // distance test (julia)
-float jtdist(float complex z, float complex c, int itnum, int retval){
-	float complex cdr = 1;
+float jtdist(complex<float> z, complex<float> c, int itnum, int retval){
+	complex<float> cdr = 1;
 	for(char n = 0; n < itnum; n++){
-		if(cabsf(z)>2.0) break;
+		if(abs(z)>2.0) break;
 		cdr *= z;
 		cdr *= 2;
 		//cdr += 1;
@@ -46,8 +48,8 @@ float jtdist(float complex z, float complex c, int itnum, int retval){
 		z += c;
 	}
 
-	float r = cabsf(z);
-	float dr = cabsf(cdr);
+	float r = abs(z);
+	float dr = abs(cdr);
 
 	switch (retval){
 	case 2:
@@ -63,10 +65,10 @@ float jtdist(float complex z, float complex c, int itnum, int retval){
 }
 
 // distance test (mandelbrot)
-float jtdistm(float complex z, float complex c, int itnum, int retval){
-	float complex cdr = 1;
+float jtdistm(complex<float> z, complex<float> c, int itnum, int retval){
+	complex<float> cdr = 1;
 	for(char n = 0; n < itnum; n++){
-		if(cabsf(z)>2.0) break;
+		if(abs(z)>2.0) break;
 		cdr *= z;
 		cdr *= 2;
 		cdr += 1;
@@ -75,8 +77,8 @@ float jtdistm(float complex z, float complex c, int itnum, int retval){
 		z += c;
 	}
 
-	float r = cabsf(z);
-	float dr = cabsf(cdr);
+	float r = abs(z);
+	float dr = abs(cdr);
 
 	switch (retval){
 	case 2:
@@ -92,11 +94,11 @@ float jtdistm(float complex z, float complex c, int itnum, int retval){
 }
 
 // distance test (4D)
-float jtdist4d(float complex z, float complex c, int itnum, int retval){
-	float complex cdrz = 1;
-	float complex cdrc = 1;
+float jtdist4d(complex<float> z, complex<float> c, int itnum, int retval){
+	complex<float> cdrz = 1;
+	complex<float> cdrc = 1;
 	for(char n = 0; n < itnum; n++){
-		if(cabsf(z)>2.0) break;
+		if(abs(z)>2.0) break;
 		cdrz *= z;
 		cdrz *= 2;
 		cdrz += 1;
@@ -108,8 +110,8 @@ float jtdist4d(float complex z, float complex c, int itnum, int retval){
 		z += c;
 	}
 
-	float r = cabsf(z);
-	float dr = cabsf(cdrc);
+	float r = abs(z);
+	float dr = abs(cdrc);
 
 	switch (retval){
 	case 2:
@@ -136,7 +138,7 @@ float spectrumSkew(float depth, int rgb){
 };
 
 
-float complex z,c;
+complex<float> z,c;
 float distr, distd, distl;
 
 
